@@ -1,0 +1,99 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.nuruysal.harrypoterdemo"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    implementation "androidx.activity:activity-ktx:1.3.1"
+
+    // Dagger Core
+    implementation "com.google.dagger:dagger:2.37"
+    implementation 'androidx.test:core-ktx:1.4.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    kapt "com.google.dagger:dagger-compiler:2.37"
+
+    // Dagger Android
+    api 'com.google.dagger:dagger-android:2.37'
+    api 'com.google.dagger:dagger-android-support:2.37'
+    kapt 'com.google.dagger:dagger-android-processor:2.37'
+
+    //Hilt - Dagger
+    implementation "com.google.dagger:hilt-android:2.37"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
+
+    //log
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    //json
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //image
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //test
+    testImplementation 'junit:junit:4.12'
+//    testImplementation 'org.mockito:mockito-core:2.24.5'
+//    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
+//    testImplementation "org.robolectric:robolectric:4.0.2"
+
+    testImplementation 'org.mockito:mockito-core:2.6.3'
+
+    androidTestImplementation 'org.mockito:mockito-android:2.6.3'
+
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.nuruysal.harrypoterdemo.app.viewmodel.RowItemViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:padding="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_row_list_item_image"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                app:glide="@{model.imageUrl}"
+                android:contentDescription="@string/row_list_item_image"
+                app:layout_constraintBottom_toTopOf="@+id/tv_row_list_item_title"
+                app:layout_constraintEnd_toEndOf="@+id/tv_row_list_item_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:id="@+id/tv_row_list_item_title"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_width="match_parent"
+                android:text="@{model.title}"
+                android:textColor="@color/text_color"
+                android:textSize="12sp"
+                android:visibility="@{model.title!=null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_row_list_item_author"
+                app:layout_constraintEnd_toEndOf="@+id/tv_row_list_item_author"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="@+id/tv_row_list_item_author"
+                tools:text="Title" />
+
+            <TextView
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:id="@+id/tv_row_list_item_author"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_width="match_parent"
+                android:text="@{model.author}"
+                android:textColor="@color/text_color"
+                android:textSize="11sp"
+                android:visibility="@{model.author!=null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="author" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

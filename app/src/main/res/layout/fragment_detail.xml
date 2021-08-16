@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nuruysal.harrypoterdemo.app.viewmodel.MainViewModel" />
+
+
+        <import type="android.view.View" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:contentDescription="@string/row_list_item_image"
+            android:foregroundGravity="center"
+            android:id="@+id/iv_row_list_item_image"
+            android:layout_height="300dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_width="300dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            app:glide="@{viewModel.selectedProduct.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:background="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            android:id="@+id/tv_row_list_item_title"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_width="0dp"
+            android:text="@{viewModel.selectedProduct.title}"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"
+            android:visibility="@{viewModel.selectedProduct.title!=null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_row_list_item_author"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_favorite"
+            app:layout_constraintTop_toTopOf="@+id/iv_favorite"
+            tools:text="Title" />
+
+        <TextView
+
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:id="@+id/tv_row_list_item_author"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:text="@{viewModel.selectedProduct.author}"
+            android:textColor="@color/text_color"
+            android:textSize="11sp"
+            android:visibility="@{viewModel.selectedProduct.author!=null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_row_list_item_title"
+            tools:text="author" />
+
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="44dp"
+            android:contentDescription="@string/favorite"
+            android:onClick="@{() -> viewModel.setSelectedProductFavoriteUnFavorite()}"
+            android:src="@{viewModel.isSelectedProductFavorite ? @drawable/ic_like : @drawable/ic_unlike}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_row_list_item_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

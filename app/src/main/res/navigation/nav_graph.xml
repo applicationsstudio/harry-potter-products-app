@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:label="ItemsListFragment"
+        android:name="com.nuruysal.harrypoterdemo.app.view.MainFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_itemsListFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:label="ItemDetailFragment"
+        android:name="com.nuruysal.harrypoterdemo.app.view.DetailFragment"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
